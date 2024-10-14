@@ -6,34 +6,45 @@
 //
 
 #include <iostream>
+using namespace std;
+
+/*
+ * Program: Dynamic Array Allocation and Summation
+ * Description: This program dynamically allocates an array of integers based on user input,
+ *              fills the array with user-provided values, calculates the sum of the values,
+ *              and then deallocates the memory properly.
+ */
 
 int main() {
-    int n;
-    
-    // Ask user for the number of elements in the array
-    std::cout << "Enter the number of elements: ";
-    std::cin >> n;
+    // Step 1: Declare a pointer for the dynamic array and an integer for array size
+    int* arr = nullptr;
+    int size;
 
-    // Dynamically allocate an array of integers
-    int* array = new int[n];
+    // Step 2: Prompt the user to enter the size of the array
+    cout << "Enter the number of elements you want to store: ";
+    cin >> size;
 
-    // Fill the array with user input
-    std::cout << "Enter " << n << " integers: ";
-    for (int i = 0; i < n; ++i) {
-        std::cin >> array[i];
+    // Step 3: Dynamically allocate memory for the array
+    arr = new int[size]; // Allocates an array of 'size' integers
+
+    // Step 4: Input values from the user to fill the array
+    cout << "Enter " << size << " integers:" << endl;
+    for (int i = 0; i < size; ++i) {
+        cout << "Element " << i + 1 << ": ";
+        cin >> arr[i];
     }
 
-    // Calculate the sum of the array
+    // Step 5: Calculate the sum of the array
     int sum = 0;
-    for (int i = 0; i < n; ++i) {
-        sum += array[i];
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i]; // Accumulate the sum of elements
     }
 
-    // Print the sum
-    std::cout << "The sum of the array is: " << sum << std::endl;
+    // Step 6: Output the sum of the array
+    cout << "The sum of the array elements is: " << sum << endl;
 
-    // Free the dynamically allocated memory
-    delete[] array;
+    // Step 7: Deallocate the memory used by the array
+    delete[] arr; // Frees up the dynamically allocated memory
 
-    return 0;
+    return 0; // Successful program termination
 }
